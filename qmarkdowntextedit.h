@@ -20,7 +20,17 @@
 #include "qplaintexteditsearchwidget.h"
 #include "markdownhighlighter.h"
 
-class QMarkdownTextEdit : public QPlainTextEdit {
+#ifndef BUILD_STATIC
+# if defined(QMarkdownTextEdit_LIB)
+#  define QMarkdownTextEdit_EXPORT Q_DECL_EXPORT
+# else
+#  define QMarkdownTextEdit_EXPORT Q_DECL_IMPORT
+# endif
+#else
+# define QMarkdownTextEdit_EXPORT
+#endif
+
+class QMarkdownTextEdit_EXPORT QMarkdownTextEdit : public QPlainTextEdit {
     Q_OBJECT
 
    public:
